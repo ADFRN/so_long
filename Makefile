@@ -6,34 +6,37 @@
 #    By: afournie <afournie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 10:47:00 by afournie          #+#    #+#              #
-#    Updated: 2025/12/09 11:12:50 by afournie         ###   ########.fr        #
+#    Updated: 2025/12/09 18:20:29 by afournie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME         = so_long
-CC           = cc
-CFLAGS       = -Wall -Wextra -Werror -g
+NAME          = so_long
+CC            = cc
+CFLAGS        = -g
 
-LIBFT_DIR    = libft
-LIBFT        = $(LIBFT_DIR)/libft.a
+LIBFT_DIR     = libft
+LIBFT         = $(LIBFT_DIR)/libft.a
 
-PRINTF_DIR   = printf
-PRINTF       = $(PRINTF_DIR)/libftprintf.a
+PRINTF_DIR    = printf
+PRINTF        = $(PRINTF_DIR)/libftprintf.a
 
-MINILIBX_DIR = minilibx/minilibx-linux
-MINILIBX     = $(MINILIBX_DIR)/libmlx.a
+MINILIBX_DIR  = minilibx/minilibx-linux
+MINILIBX      = $(MINILIBX_DIR)/libmlx_Linux.a
 
-INC          = -I includes -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MINILIBX_DIR)
+INC           = -I includes -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MINILIBX_DIR)
 
-SRCS = main.c
+SRCS_DIR      = srcs
+SRCS          = $(SRCS_DIR)/main.c \
+				$(SRCS_DIR)/get_next_line.c \
+				$(SRCS_DIR)/get_map_info.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS         = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(PRINTF) $(MINILIBX) $(OBJS)
 	@echo "🔗 Linking $(NAME)..."
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) $(MINILIBX) -lX11 -lm -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) $(MINILIBX) -L.. -Lmlx -lXext -lX11 -lm -o $(NAME)
 	@echo "✅ $(NAME) generated"
 
 $(LIBFT):

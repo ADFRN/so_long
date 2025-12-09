@@ -1,0 +1,28 @@
+/* XPM */
+static char *collect[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 7 1 ",
+"  c black",
+". c #DD5A08",
+"X c #FEAE34",
+"o c #FEE761",
+"O c #F9E6CF",
+"+ c #FFF7D2",
+"@ c None",
+/* pixels */
+"@@@@@@@@@OO@@@@@",
+"@@@@@@@OO  O@@@@",
+"@@@@@OO  ++ O@@@",
+"@@@OO  ++oo+ O@@",
+"@OO  ++ooXXo+ O@",
+"O  ++ooXooXXo+ O",
+"O ++ooXXXXXXo+ O",
+"O .++ooXXXo++. O",
+"O ..++ooo++X.. O",
+"O .X.++++X...  O",
+"@O XXo+XX..  OO@",
+"@@O oo+X.  OO@@@",
+"@@@O o+  OO@@@@@",
+"@@@@O  OO@@@@@@@",
+"@@@@@OO@@@@@@@@@"
+};
