@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:48:59 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/10 17:37:11 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/10 20:00:48 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,25 @@ typedef struct s_game
 	int		moves;
 }			t_game;
 
+void		move_player(t_game *game, int new_y, int new_x, void *texture);
 char		**expand_map(char **old_map, int old_size, char *new_line);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+void		count_collectibles(const char *s, t_game *game);
 char		*ft_strjoin(char const *s1, char const *s2);
 void		get_map_info(t_game *game, char *map_path);
+void		render_tile(t_game *game, int x, int y);
 char		*ft_strchr(const char *s, int i);
 void		init_textures(t_game *game);
 int			press_key(int key, void *p);
 void		get_map_size(t_game *game);
+void		check_events(t_game *game);
+void		render_game(t_game *game);
 char		*ft_strdup(const char *s);
-size_t		ft_strlen(const char *s);
+void		free_struct(t_game *game);
 void		move_right(t_game *game);
 void		move_left(t_game *game);
 void		move_down(t_game *game);
+void		free_map(t_game *game);
 char		*get_next_line(int fd);
 void		move_up(t_game *game);
 int			close_window(void *p);

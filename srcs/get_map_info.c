@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:03:19 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/10 14:07:18 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/10 19:17:41 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	**expand_map(char **old_map, int old_size, char *new_line)
 	int		i;
 
 	new_map = malloc(sizeof(char *) * (old_size + 2));
+	if (!new_map)
+		return (NULL);
 	i = 0;
 	while (i < old_size)
 	{
@@ -28,6 +30,22 @@ char	**expand_map(char **old_map, int old_size, char *new_line)
 	new_map[old_size + 1] = NULL;
 	free(old_map);
 	return (new_map);
+}
+
+void	count_collectibles(const char *s, t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (s[i] == COLLECTIBLE)
+			j++;
+		i++;
+	}
+	game->collectibles = game->collectibles + j;
 }
 
 void	get_map_info(t_game *game, char *map_path)
@@ -45,6 +63,7 @@ void	get_map_info(t_game *game, char *map_path)
 	while (map)
 	{
 		game->map = expand_map(game->map, size, map);
+		count_collectibles(map, game);
 		size++;
 		map = get_next_line(fd);
 	}

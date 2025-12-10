@@ -6,13 +6,13 @@
 #    By: afournie <afournie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 10:47:00 by afournie          #+#    #+#              #
-#    Updated: 2025/12/10 17:03:33 by afournie         ###   ########.fr        #
+#    Updated: 2025/12/10 20:03:26 by afournie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME          = so_long
 CC            = cc
-CFLAGS        = -g
+CFLAGS        = -Wall -Wextra -Werror -g
 
 LIBFT_DIR     = libft
 LIBFT         = $(LIBFT_DIR)/libft.a
@@ -26,11 +26,14 @@ MINILIBX      = $(MINILIBX_DIR)/libmlx_Linux.a
 INC           = -I includes -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MINILIBX_DIR)
 
 SRCS_DIR      = srcs
-SRCS          = $(SRCS_DIR)/main.c \
-				$(SRCS_DIR)/get_next_line.c \
+
+SRCS          = $(SRCS_DIR)/get_next_line.c \
 				$(SRCS_DIR)/get_map_info.c \
-				$(SRCS_DIR)/movements/movements.c \
-				$(SRCS_DIR)/textures/textures.c
+				$(SRCS_DIR)/movements.c \
+				$(SRCS_DIR)/free_all.c \
+				$(SRCS_DIR)/graphics.c \
+				$(SRCS_DIR)/events.c \
+				$(SRCS_DIR)/main.c
 
 OBJS         = $(SRCS:.c=.o)
 
