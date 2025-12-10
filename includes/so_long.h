@@ -6,15 +6,28 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:48:59 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/09 18:28:11 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:37:11 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define MLX
 # define BUFFER_SIZE 1024
+# define WALL '1'
+# define PLAYER 'P'
+# define COLLECTIBLE 'C'
+# define EXIT 'E'
+# define FLOOR '0'
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
+# define UARROW_KEY 65362
+# define LARROW_KEY 65361
+# define DARROW_KEY 65364
+# define RARROW_KEY 65363
+# define ECHAP_KEY 0xFF1B
 
 # include "../libft/libft.h"
 # include "../minilibx/minilibx-linux/mlx.h"
@@ -23,30 +36,24 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_data;
-
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
 
-	void	*tex_wall;
-	void	*tex_floor;
-	void	*tex_player;
+	void	*tex_player_front;
+	void	*tex_player_right;
+	void	*tex_player_back;
+	void	*tex_player_left;
 	void	*tex_collect;
+	void	*tex_floor;
+	void	*tex_wall;
 	void	*tex_exit;
 
+	int		tile_size;
+	int		height;
 	char	**map;
 	int		width;
-	int		height;
-	int		tile_size;
 
 	int		player_x;
 	int		player_y;
@@ -56,14 +63,21 @@ typedef struct s_game
 	int		moves;
 }			t_game;
 
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-size_t		ft_strlen(const char *s);
-char		*ft_strchr(const char *s, int i);
-char		*ft_strdup(const char *s);
-char		*ft_strjoin(char const *s1, char const *s2);
-char		*get_next_line(int fd);
-void		get_map_info(t_game *game, char *map_path);
 char		**expand_map(char **old_map, int old_size, char *new_line);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strjoin(char const *s1, char const *s2);
+void		get_map_info(t_game *game, char *map_path);
+char		*ft_strchr(const char *s, int i);
+void		init_textures(t_game *game);
+int			press_key(int key, void *p);
 void		get_map_size(t_game *game);
+char		*ft_strdup(const char *s);
+size_t		ft_strlen(const char *s);
+void		move_right(t_game *game);
+void		move_left(t_game *game);
+void		move_down(t_game *game);
+char		*get_next_line(int fd);
+void		move_up(t_game *game);
+int			close_window(void *p);
 
 #endif

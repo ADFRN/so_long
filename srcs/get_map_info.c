@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:03:19 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/09 18:48:43 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:07:18 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	get_map_info(t_game *game, char *map_path)
 		size++;
 		map = get_next_line(fd);
 	}
-	size = -1;
-	while (game->map[size++])
-		ft_printf("%s", game->map[size]);
+	close(fd);
 }
 
 void	get_map_size(t_game *game)
@@ -59,12 +57,16 @@ void	get_map_size(t_game *game)
 	int	height;
 
 	height = 0;
+	if (!game->map || !game->map[0])
+	{
+		ft_printf("Error: map is empty or invalid\n");
+		exit(1);
+	}
 	width = ft_strlen(game->map[0]);
+	if (width > 0 && game->map[0][width - 1] == '\n')
+		width--;
 	while (game->map[height])
 		height++;
 	game->height = height;
 	game->width = width;
-
-	ft_printf("h : %i\n", height);
-	ft_printf("w : %i\n", width);
 }

@@ -6,7 +6,7 @@
 #    By: afournie <afournie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 10:47:00 by afournie          #+#    #+#              #
-#    Updated: 2025/12/09 18:20:29 by afournie         ###   ########.fr        #
+#    Updated: 2025/12/10 17:03:33 by afournie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ INC           = -I includes -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MINILIBX_DIR)
 SRCS_DIR      = srcs
 SRCS          = $(SRCS_DIR)/main.c \
 				$(SRCS_DIR)/get_next_line.c \
-				$(SRCS_DIR)/get_map_info.c
+				$(SRCS_DIR)/get_map_info.c \
+				$(SRCS_DIR)/movements/movements.c \
+				$(SRCS_DIR)/textures/textures.c
 
 OBJS         = $(SRCS:.c=.o)
 
