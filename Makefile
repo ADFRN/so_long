@@ -20,20 +20,20 @@ LIBFT         = $(LIBFT_DIR)/libft.a
 PRINTF_DIR    = printf
 PRINTF        = $(PRINTF_DIR)/libftprintf.a
 
-MINILIBX_DIR  = minilibx/minilibx-linux
-MINILIBX      = $(MINILIBX_DIR)/libmlx_Linux.a
+MINILIBX_DIR  = minilibx/minilibx_opengl
+MINILIBX      = $(MINILIBX_DIR)/libmlx.a
 
 INC           = -I includes -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MINILIBX_DIR)
 
 SRCS_DIR      = srcs
 
 SRCS          = $(SRCS_DIR)/get_next_line.c \
-				$(SRCS_DIR)/get_map_info.c \
-				$(SRCS_DIR)/movements.c \
-				$(SRCS_DIR)/free_all.c \
-				$(SRCS_DIR)/graphics.c \
-				$(SRCS_DIR)/events.c \
-				$(SRCS_DIR)/main.c
+								$(SRCS_DIR)/get_map_info.c \
+								$(SRCS_DIR)/movements.c \
+								$(SRCS_DIR)/free_all.c \
+								$(SRCS_DIR)/graphics.c \
+								$(SRCS_DIR)/events.c \
+								$(SRCS_DIR)/main.c
 
 OBJS         = $(SRCS:.c=.o)
 
@@ -41,7 +41,8 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(PRINTF) $(MINILIBX) $(OBJS)
 	@echo "🔗 Linking $(NAME)..."
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) $(MINILIBX) -L.. -Lmlx -lXext -lX11 -lm -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) $(MINILIBX) \
+		-L $(MINILIBX_DIR) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "✅ $(NAME) generated"
 
 $(LIBFT):

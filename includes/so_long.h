@@ -28,6 +28,10 @@
 # define DARROW_KEY 65364
 # define RARROW_KEY 65363
 # define ECHAP_KEY 0xFF1B
+# define UP_KEY_MAC 13
+# define LEFT_KEY_MAC 0
+# define DOWN_KEY_MAC 1
+# define RIGHT_KEY_MAC 2
 
 # include "../libft/libft.h"
 # include "../minilibx/minilibx-linux/mlx.h"

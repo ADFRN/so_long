@@ -24,15 +24,16 @@ int	close_window(void *p)
 
 int	press_key(int key, void *p)
 {
+	ft_printf("key: %i\n", key);
 	if (key == ECHAP_KEY)
 		close_window((t_game *)p);
-	if (key == W_KEY || key == UARROW_KEY)
+	if (key == W_KEY || key == UARROW_KEY || key == UP_KEY_MAC)
 		move_up((t_game *)p);
-	if (key == A_KEY || key == LARROW_KEY)
+	if (key == A_KEY || key == LARROW_KEY || key == LEFT_KEY_MAC)
 		move_left((t_game *)p);
-	if (key == S_KEY || key == DARROW_KEY)
+	if (key == S_KEY || key == DARROW_KEY || key == DOWN_KEY_MAC)
 		move_down((t_game *)p);
-	if (key == D_KEY || key == RARROW_KEY)
+	if (key == D_KEY || key == RARROW_KEY || key == RIGHT_KEY_MAC)
 		move_right((t_game *)p);
 	return (0);
 }
