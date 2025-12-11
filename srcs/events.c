@@ -24,7 +24,6 @@ int	close_window(void *p)
 
 int	press_key(int key, void *p)
 {
-	ft_printf("key: %i\n", key);
 	if (key == ECHAP_KEY)
 		close_window((t_game *)p);
 	if (key == W_KEY || key == UARROW_KEY || key == UP_KEY_MAC)
