@@ -31,5 +31,5 @@ Cartes
 Ressources utiles
 -----------------
 
-- MiniLibX macOS et Linux sont incluses dans `minilibx/` et `minilibx-linux/`.
-- Pour regénérer une map d'exemple: `./maps/generate.sh`.
+- MiniLibX macOS et incluse dans  `minilibx/`.
+- Pour regénérer une map : `./maps/generate.sh`.
