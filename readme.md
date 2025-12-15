@@ -1,7 +1,7 @@
 so_long (Linux)
 ================================
 
-Petit jeu 2D réalisé avec MiniLibX (projet 42). Le joueur doit récupérer toutes les collectes puis atteindre la sortie sans traverser les murs.
+Petit jeu 2D réalisé avec MiniLibX (projet 42). Le joueur doit récupérer toutes les collectibles puis atteindre la sortie.
 
 ![Gameplay](./so_long.gif)
 
@@ -15,7 +15,7 @@ Lancer le jeu
 -------------
 
 - Construire: `make`
-- Exécuter: `./so_long maps/map_1765289120.ber` (ou toute carte `.ber` valide).
+- Exécuter: `./so_long map.ber`.
 - Nettoyer les binaires: `make clean` ; tout nettoyer: `make fclean`.
 
 Contrôles
@@ -28,10 +28,5 @@ Cartes
 ------
 
 - Les cartes sont des fichiers `.ber` dans `maps/`.
+- Un script `generate.sh` est disponible afin de generer de nouvelles maps.
 - Chaque carte doit être rectangulaire et entourée de murs, contenir au moins une sortie `E`, un joueur `P` et un collectible `C`.
-
-Ressources utiles
------------------
-
-- MiniLibX Linux et incluse dans  `minilibx/`.
-- Pour regénérer une map : `./maps/generate.sh`.
