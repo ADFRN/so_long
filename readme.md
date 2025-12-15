@@ -3,6 +3,8 @@ so_long (Linux)
 
 Petit jeu 2D réalisé avec MiniLibX (projet 42). Le joueur doit récupérer toutes les collectes puis atteindre la sortie sans traverser les murs.
 
+![Gameplay](./so_long.gif)
+
 Installation
 ------------
 

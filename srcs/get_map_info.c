@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:03:19 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/10 19:17:41 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:04:16 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,30 @@ char	**expand_map(char **old_map, int old_size, char *new_line)
 	return (new_map);
 }
 
-void	count_collectibles(const char *s, t_game *game)
+void	count_components(const char *s, t_game *game)
 {
 	int	i;
-	int	j;
+	int	c;
+	int	e;
+	int	p;
 
 	i = 0;
-	j = 0;
+	c = 0;
+	p = 0;
+	e = 0;
 	while (s[i])
 	{
 		if (s[i] == COLLECTIBLE)
-			j++;
+			c++;
+		if (s[i] == PLAYER)
+			p++;
+		if (s[i] == EXIT)
+			e++;
 		i++;
 	}
-	game->collectibles = game->collectibles + j;
+	game->collectibles = game->collectibles + c;
+	game->player_count = game->player_count + p;
+	game->exit_count = game->exit_count + e;
 }
 
 void	get_map_info(t_game *game, char *map_path)
@@ -63,7 +73,7 @@ void	get_map_info(t_game *game, char *map_path)
 	while (map)
 	{
 		game->map = expand_map(game->map, size, map);
-		count_collectibles(map, game);
+		count_components(map, game);
 		size++;
 		map = get_next_line(fd);
 	}
@@ -78,8 +88,8 @@ void	get_map_size(t_game *game)
 	height = 0;
 	if (!game->map || !game->map[0])
 	{
-		ft_printf("Error: map is empty or invalid\n");
-		exit(1);
+		ft_printf("Error\nMap is empty or invalid");
+		exit(EXIT_FAILURE);
 	}
 	width = ft_strlen(game->map[0]);
 	if (width > 0 && game->map[0][width - 1] == '\n')

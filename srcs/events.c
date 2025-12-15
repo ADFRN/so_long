@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:56:30 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/10 19:52:57 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:40:44 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	close_window(void *p)
 
 	game = (t_game *)p;
 	free_struct(game);
-	exit(0);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 int	press_key(int key, void *p)
@@ -34,7 +33,7 @@ int	press_key(int key, void *p)
 		move_down((t_game *)p);
 	if (key == D_KEY || key == RARROW_KEY)
 		move_right((t_game *)p);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 void	check_events(t_game *game)
@@ -46,7 +45,6 @@ void	check_events(t_game *game)
 	{
 		game->collected += 1;
 		game->map[game->player_y][game->player_x] = '0';
-		ft_printf("Collecte : %i/%i\n", game->collected, game->collectibles);
 	}
 	else if (cell == EXIT)
 	{
@@ -54,5 +52,3 @@ void	check_events(t_game *game)
 		close_window(game);
 	}
 }
-
-

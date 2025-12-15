@@ -6,7 +6,7 @@
 #    By: afournie <afournie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 10:47:00 by afournie          #+#    #+#              #
-#    Updated: 2025/12/10 20:03:26 by afournie         ###   ########.fr        #
+#    Updated: 2025/12/15 16:02:53 by afournie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ INC           = -I includes -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MINILIBX_DIR)
 
 SRCS_DIR      = srcs
 
-SRCS          = $(SRCS_DIR)/get_next_line.c \
+SRCS          = $(SRCS_DIR)/map_verificator.c \
+				$(SRCS_DIR)/get_next_line.c \
 				$(SRCS_DIR)/get_map_info.c \
 				$(SRCS_DIR)/movements.c \
 				$(SRCS_DIR)/free_all.c \

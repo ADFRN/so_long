@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:48:59 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/10 20:00:48 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:45:46 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define SO_LONG_H
 
 # define BUFFER_SIZE 1024
-# define WALL '1'
-# define PLAYER 'P'
 # define COLLECTIBLE 'C'
-# define EXIT 'E'
+# define PLAYER 'P'
 # define FLOOR '0'
+# define WALL '1'
+# define EXIT 'E'
 # define W_KEY 119
 # define A_KEY 97
 # define S_KEY 115
@@ -58,7 +58,9 @@ typedef struct s_game
 	int		player_x;
 	int		player_y;
 
+	int		player_count;
 	int		collectibles;
+	int		exit_count;
 	int		collected;
 	int		moves;
 }			t_game;
@@ -66,11 +68,17 @@ typedef struct s_game
 void		move_player(t_game *game, int new_y, int new_x, void *texture);
 char		**expand_map(char **old_map, int old_size, char *new_line);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-void		count_collectibles(const char *s, t_game *game);
+void		count_components(const char *s, t_game *game);
 char		*ft_strjoin(char const *s1, char const *s2);
 void		get_map_info(t_game *game, char *map_path);
 void		render_tile(t_game *game, int x, int y);
+int			check_map_walls_inline(t_game *game);
+int			check_map_rectangular(t_game *game);
+int			check_map_components(t_game *game);
 char		*ft_strchr(const char *s, int i);
+int			map_verificator(t_game *game);
+int			check_map_walls(t_game *game);
+int			map_verificator(t_game *game);
 void		init_textures(t_game *game);
 int			press_key(int key, void *p);
 void		get_map_size(t_game *game);
