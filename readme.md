@@ -1,3 +1,5 @@
+#### *This project has been created as part of the 42 curriculum by afournie.*
+
 # SO_LONG (Linux)
 
 Petit jeu 2D réalisé avec MiniLibX (projet 42). Le joueur doit récupérer toutes les collectibles puis atteindre la sortie.
