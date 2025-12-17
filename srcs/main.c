@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:46:43 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/15 16:37:43 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:32:04 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	ft_bzero(game, sizeof(t_game));
 	get_map_info(game, argv[1]);
 	get_map_size(game);
+	if (!pathfinder(copy_map(game), &(t_pathfinder){0, 0, 0, 0}))
+		free_struct(game);
 	game->mlx = mlx_init();
 	mlx_do_key_autorepeaton(game->mlx);
 	init_textures(game);

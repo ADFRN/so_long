@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:48:59 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/15 16:45:46 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:35:16 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define FLOOR '0'
 # define WALL '1'
 # define EXIT 'E'
+# define VISITED 'V'
 # define W_KEY 119
 # define A_KEY 97
 # define S_KEY 115
@@ -33,6 +34,7 @@
 # include "../minilibx/minilibx-linux/mlx.h"
 # include "../printf/ft_printf.h"
 # include <fcntl.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -65,6 +67,22 @@ typedef struct s_game
 	int		moves;
 }			t_game;
 
+typedef struct s_pathfinder
+{
+	int		x;
+	int		y;
+	int		nb_comp_get;
+	int		nb_comp_total;
+}			t_pathfinder;
+
+typedef struct s_map
+{
+	int		tile_size;
+	int		map_height;
+	int		map_width;
+	char	**map;
+}			t_map;
+
 void		move_player(t_game *game, int new_y, int new_x, void *texture);
 char		**expand_map(char **old_map, int old_size, char *new_line);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
@@ -93,5 +111,11 @@ void		free_map(t_game *game);
 char		*get_next_line(int fd);
 void		move_up(t_game *game);
 int			close_window(void *p);
+void		free_map_pathfinding(t_map *map);
+void		count_nb_components(t_map *map, t_pathfinder *finder);
+void		set_finder_xy(t_map *map, t_pathfinder *finder);
+void		browse_map(t_map *map, t_pathfinder *f, int nx, int ny);
+bool		pathfinder(t_map *map_copy, t_pathfinder *finder);
+t_map		*copy_map(t_game *game);
 
 #endif

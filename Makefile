@@ -6,7 +6,7 @@
 #    By: afournie <afournie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 10:47:00 by afournie          #+#    #+#              #
-#    Updated: 2025/12/15 16:02:53 by afournie         ###   ########.fr        #
+#    Updated: 2025/12/17 17:32:46 by afournie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS_DIR      = srcs
 SRCS          = $(SRCS_DIR)/map_verificator.c \
 				$(SRCS_DIR)/get_next_line.c \
 				$(SRCS_DIR)/get_map_info.c \
+				$(SRCS_DIR)/pathfinding.c \
 				$(SRCS_DIR)/movements.c \
 				$(SRCS_DIR)/free_all.c \
 				$(SRCS_DIR)/graphics.c \

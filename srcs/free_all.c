@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 19:23:32 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/10 19:53:49 by afournie         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:34:44 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ void	free_map(t_game *game)
 	}
 	free(game->map);
 	game->map = NULL;
+}
+
+void	free_map_pathfinding(t_map *map)
+{
+	int	i;
+
+	i = -1;
+	while (map->map[++i])
+		free(map->map[i]);
+	free(map->map);
 }
 
 void	destroy_images(t_game *game)
