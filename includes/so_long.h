@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:48:59 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/17 17:35:16 by afournie         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:43:03 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,10 @@ typedef struct s_map
 void		move_player(t_game *game, int new_y, int new_x, void *texture);
 char		**expand_map(char **old_map, int old_size, char *new_line);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+void		browse_map(t_map *map, t_pathfinder *f, int nx, int ny);
+void		count_nb_components(t_map *map, t_pathfinder *finder);
+bool		pathfinder(t_map *map_copy, t_pathfinder *finder);
+void		set_finder_xy(t_map *map, t_pathfinder *finder);
 void		count_components(const char *s, t_game *game);
 char		*ft_strjoin(char const *s1, char const *s2);
 void		get_map_info(t_game *game, char *map_path);
@@ -94,6 +98,7 @@ int			check_map_walls_inline(t_game *game);
 int			check_map_rectangular(t_game *game);
 int			check_map_components(t_game *game);
 char		*ft_strchr(const char *s, int i);
+void		free_map_pathfinding(t_map *map);
 int			map_verificator(t_game *game);
 int			check_map_walls(t_game *game);
 int			map_verificator(t_game *game);
@@ -107,15 +112,10 @@ void		free_struct(t_game *game);
 void		move_right(t_game *game);
 void		move_left(t_game *game);
 void		move_down(t_game *game);
+t_map		*copy_map(t_game *game);
 void		free_map(t_game *game);
 char		*get_next_line(int fd);
 void		move_up(t_game *game);
 int			close_window(void *p);
-void		free_map_pathfinding(t_map *map);
-void		count_nb_components(t_map *map, t_pathfinder *finder);
-void		set_finder_xy(t_map *map, t_pathfinder *finder);
-void		browse_map(t_map *map, t_pathfinder *f, int nx, int ny);
-bool		pathfinder(t_map *map_copy, t_pathfinder *finder);
-t_map		*copy_map(t_game *game);
 
 #endif

@@ -6,13 +6,13 @@
 #    By: afournie <afournie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 10:47:00 by afournie          #+#    #+#              #
-#    Updated: 2025/12/17 17:32:46 by afournie         ###   ########.fr        #
+#    Updated: 2026/01/12 14:49:14 by afournie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME          = so_long
 CC            = cc
-CFLAGS        = -Wall -Wextra -Werror -g
+CFLAGS        = -Wall -Wextra -Werror
 
 LIBFT_DIR     = libft
 LIBFT         = $(LIBFT_DIR)/libft.a
@@ -42,42 +42,36 @@ OBJS         = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(PRINTF) $(MINILIBX) $(OBJS)
-	@echo "🔗 Linking $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) $(MINILIBX) -L.. -Lmlx -lXext -lX11 -lm -o $(NAME)
-	@echo "✅ $(NAME) generated"
+	@echo "$(NAME) generated"
 
 $(LIBFT):
-	@echo "📚 Compiling libft..."
 	@make -C $(LIBFT_DIR) > /dev/null 2>&1
-	@echo "✅ libft generated"
+	@echo "libft generated"
 
 $(PRINTF):
-	@echo "📚 Compiling printf..."
 	@make -C $(PRINTF_DIR) > /dev/null 2>&1
-	@echo "✅ printf generated"
+	@echo "printf generated"
 
 $(MINILIBX):
-	@echo "📚 Compiling minilibx..."
 	@make -C $(MINILIBX_DIR) > /dev/null 2>&1
-	@echo "✅ minilibx generated"
+	@echo "minilibx generated"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	@echo "🧹 Cleaning objects..."
 	@make -C $(LIBFT_DIR) clean > /dev/null 2>&1
 	@make -C $(PRINTF_DIR) clean > /dev/null 2>&1
 	@make -C $(MINILIBX_DIR) clean > /dev/null 2>&1
 	@rm -f $(OBJS)
-	@echo "✅ Objects cleaned"
+	@echo "Objects cleaned"
 
 fclean: clean
-	@echo "🗑️  Full clean..."
 	@make -C $(LIBFT_DIR) fclean > /dev/null 2>&1
 	@make -C $(PRINTF_DIR) fclean > /dev/null 2>&1
 	@rm -f $(NAME)
-	@echo "✅ $(NAME) removed"
+	@echo "$(NAME) removed"
 
 re: fclean all
 

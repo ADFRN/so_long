@@ -6,11 +6,12 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:03:19 by afournie          #+#    #+#             */
-/*   Updated: 2025/12/15 16:04:16 by afournie         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:27:07 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include <stdio.h>
 
 char	**expand_map(char **old_map, int old_size, char *new_line)
 {
@@ -53,9 +54,9 @@ void	count_components(const char *s, t_game *game)
 			e++;
 		i++;
 	}
-	game->collectibles = game->collectibles + c;
-	game->player_count = game->player_count + p;
-	game->exit_count = game->exit_count + e;
+	game->collectibles += c;
+	game->player_count += p;
+	game->exit_count += e;
 }
 
 void	get_map_info(t_game *game, char *map_path)
@@ -88,7 +89,7 @@ void	get_map_size(t_game *game)
 	height = 0;
 	if (!game->map || !game->map[0])
 	{
-		ft_printf("Error\nMap is empty or invalid");
+		ft_printf("Error\nMap is empty or invalid\n");
 		exit(EXIT_FAILURE);
 	}
 	width = ft_strlen(game->map[0]);
