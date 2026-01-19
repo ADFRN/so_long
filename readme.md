@@ -2,6 +2,8 @@
 
 # SO_LONG (Linux)
 
+![result](./correction.png)
+
 Petit jeu 2D réalisé avec MiniLibX (projet 42). Le joueur doit récupérer toutes les collectibles puis atteindre la sortie.
 
 ![Gameplay](./so_long.gif)
